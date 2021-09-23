@@ -1,0 +1,136 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Evolent contact application
+  description: >
+    This API provides a generic mechanism for supporting entity and process
+    updates and uses Server Sent Event technology to send response.
+  license:
+    name: Anurag.
+  contact:
+    name: Anurag.
+    url: 'http://www.evolent.com'
+    email: support@evolent.com
+
+
+host: api.evolent.com
+schemes:
+  - http
+  - https
+basePath: /contacts
+paths:
+  /list:
+    get:
+      operationId: fetchAllContacts
+      produces:
+        - application/json
+      description: >
+        This service lists all the available contacts present in database
+      responses:
+        '200':
+          description: >
+            *OK*
+          schema:
+            $ref: '#/definitions/ContactsInfo'
+
+  /add:
+    post:
+      operationId: addContact
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: >
+        This service adds a new contact to the database
+      parameters:
+        - in: body
+          name: Contact
+          schema:
+            $ref: '#/definitions/ContactInfo'
+          required: true
+          description: Contact Details
+      responses:
+        '200':
+          description: >
+            *OK* 
+          schema:
+             type: string
+  /edit:
+    patch:
+      operationId: editExistingContact
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: >
+        This service adds a new contact to the database
+      parameters:
+        - in: body
+          name: Contact
+          schema:
+            $ref: '#/definitions/ContactInfo'
+          required: true
+          description: Contact Details
+      responses:
+        '200':
+          description: >
+            *OK* 
+          schema:
+             type: string
+  /inactivate:
+    delete:
+      operationId: deleteContact
+      description: >
+        This service adds a new contact to the database
+      parameters:
+        - in: query
+          name: phone
+          type: integer
+          format: int64
+          description: Phone Number
+        - in: query
+          name: email
+          type: string
+          description: email
+      responses:
+        '200':
+          description: >
+            *OK*
+          schema:
+             type: string 
+
+definitions:
+  ContactsInfo:
+    x-dox-Since: 10
+    description: |
+      Contacts List
+    type: array
+    items:
+      $ref: "#/definitions/ContactInfo"
+  ContactInfo:
+    x-dox-Since: 10
+    description: |
+      Contact object containing a person's contact information
+    type: object
+    properties:
+      id:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      phone:
+        type: integer
+        format: int64
+parameters:
+
+  path-contactId:
+    x-dox-Since: v10.3
+    name: contactId
+    in: path
+    description: |
+      The ID of the contact
+    required: true
+    type: string
