@@ -116,7 +116,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8
 		</project.reporting.outputEncoding>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<version.swagger.codegen>2.4.18</version.swagger.codegen>
 		<swagger.yaml.file>${project.basedir}/src/main/resources/swagger.yaml
 		</swagger.yaml.file>
