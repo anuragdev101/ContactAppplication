@@ -100,3 +100,5 @@ Authorization: Bearer random_token_values
 2. An active contact is uniquely identified by either email or phone number.
 3. Since this app is deployed on heroku, a job has been created on CronJobs which will ping the application after certain time so as to mark the application as active inside heroku and keep it alive.
 4. For using edit contact service, we cannot paas both updated phone and email (because of #2). Either supply one of them or deactivate the contact using deactivate service first.
+5. Only the active contacts are being retrieved from the database.
+6. Deletion of contact means soft delete, i.e; it's status will be marked as inactive.
