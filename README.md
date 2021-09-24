@@ -4,6 +4,7 @@ This a springboot application which maintains a record of user contacts in the d
 ## Current status
 1. It is currently deployed on heroku .
 2. It uses HSQL Db (In-memory Db).
+3. User password is stored in the database using BCryptPasswordEncoder
 
 ## Features
 1. Add contact: Allows you add new contacts in the application database.
@@ -80,7 +81,17 @@ Body parameters:
   }
 ```
 
-### 6. GET: /users/ping
+### 6. POST: /users/signup
+Service to create new user in database
+Body parameters:
+```bash
+  {
+  "username" = "",
+  "password" = ""
+  }
+```
+
+### 7. GET: /users/ping
 Extra service created to keep the application alive inside heroku. Return a simple string (No Auth reqd)
 
 ## Usage:
@@ -93,7 +104,10 @@ Extra service created to keep the application alive inside heroku. Return a simp
 Authorization: Bearer random_token_values
 ```
 
+![tokenHeader](https://user-images.githubusercontent.com/41896871/134681895-053b8b79-6fb3-4ee6-9eaa-de8df1b9f632.JPG)
+
 3. Pass this token to other REST endpoints in headers in same format while making a request.
+![tokenAuth](https://user-images.githubusercontent.com/41896871/134681761-3d7f3b86-8024-4bdb-87a8-d8bb6d1fce47.JPG)
 
 ## Limitations:
 1. This application uses inMemory sql db (HSQL) to store the data.
