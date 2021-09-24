@@ -3,8 +3,10 @@ This a springboot application which maintains a record of user contacts in the d
 
 ## Current status
 1. It is currently deployed on heroku .
-2. It uses HSQL Db (In-memory Db).
-3. User password is stored in the database using BCryptPasswordEncoder
+2. Rest specification is defined inside swagger.yaml
+3. It uses swagger codegenerator to generate server side code (Restcontrollers, delegate and all).
+4. It uses HSQL Db (In-memory Db).
+5. User password is stored in the database using BCryptPasswordEncoder.
 
 ## Features
 1. Add contact: Allows you add new contacts in the application database.
